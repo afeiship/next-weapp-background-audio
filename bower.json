@@ -1,0 +1,26 @@
+{
+  "name": "next-weapp-background-audio",
+  "description": "BackgroundAudio for weapp.",
+  "main": "dist/next-weapp-background-audio.js",
+  "authors": [
+    "afei"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "next"
+  ],
+  "homepage": "https://github.com/afeiship/next-weapp-background-audio",
+  "moduleType": [
+    "amd"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "src",
+    "build",
+    "gulpfile.js"
+  ]
+}
