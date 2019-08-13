@@ -1,3 +1,11 @@
+/*!
+ * name: next-weapp-background-audio
+ * url: https://github.com/afeiship/next-weapp-background-audio
+ * version: 1.0.0
+ * date: 2019-08-13T01:21:54.881Z
+ * license: MIT
+ */
+
 (function() {
   var global = global || this || window || Function('return this')();
   var nx = global.nx || require('next-js-core2');
@@ -78,3 +86,5 @@
     module.exports = NxWeappBackgroundAudio;
   }
 })();
+
+//# sourceMappingURL=next-weapp-background-audio.js.map
