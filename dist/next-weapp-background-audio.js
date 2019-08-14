@@ -2,7 +2,7 @@
  * name: next-weapp-background-audio
  * url: https://github.com/afeiship/next-weapp-background-audio
  * version: 1.0.0
- * date: 2019-08-13T01:21:54.881Z
+ * date: 2019-08-14T06:02:54.042Z
  * license: MIT
  */
 
@@ -10,6 +10,7 @@
   var global = global || this || window || Function('return this')();
   var nx = global.nx || require('next-js-core2');
   var nxClassify = nx.classify || require('next-classify');
+  var DEFAULT_OPTIONS = { title: '未命名', onChange: nx.noop };
   var EVENTS = [
     'canplay',
     'waiting',
@@ -54,7 +55,7 @@
     },
     methods: {
       init: function(inOptions) {
-        this.options = inOptions;
+        this.options = nx.mix(null, DEFAULT_OPTIONS, inOptions);
         this.audio = wx.getBackgroundAudioManager();
         nx.mix(this.audio, this.options);
         this._status = NxWeappBackgroundAudio.STATUS.init;
@@ -71,12 +72,20 @@
         });
       },
       change: function(inEvent) {
-        console.log('inEvent.type', inEvent, inEvent.type);
+        this.onChange(inEvent);
       },
-      'play,pause,stop': function(inName) {
+      play: function() {
+        var src = this.options.src;
+        if (this.audio.src && src) {
+          this.audio.play();
+        } else {
+          this.audio.src = src;
+        }
+      },
+      'pause,stop,seek': function(inName) {
         var self = this;
         return function() {
-          return self.audio[inName]();
+          return self.audio[inName].apply(self.audio, arguments);
         };
       }
     }
