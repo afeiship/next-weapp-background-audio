@@ -7,15 +7,28 @@ npm install -S afeiship/next-weapp-background-audio --registry=https://registry.
 ```
 
 ## apis
-| api | params | description   |
-|-----|--------|---------------|
-| get | -      | desc balabala |
+| api   | params | description                     |
+| ----- | ------ | ------------------------------- |
+| play  | -      | 播放音乐                        |
+| pause | -      | 暂停音乐                        |
+| stop  | -      | 停止音乐                        |
+| move  | -      | 跳转到指定位置(alias for: seek) |
+| seek  | -      | 跳转到指定位置                  |
+| prop  | -      | set/get 属性                    |
 
 ## usage
 ```js
 import NxWeappBackgroundAudio from 'next-weapp-background-audio';
 
 // code goes here:
+initAudio() {
+  const { model } = this.data;
+  this.audioCtx = new NxWeappBackgroundAudio({
+    src: model.src,
+    title: model.title,
+    onChange: this.onAudioChange.bind(this)
+  });
+}
 ```
 
 ## resources

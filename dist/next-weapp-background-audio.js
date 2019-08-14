@@ -2,7 +2,7 @@
  * name: next-weapp-background-audio
  * url: https://github.com/afeiship/next-weapp-background-audio
  * version: 1.0.0
- * date: 2019-08-14T06:45:48.470Z
+ * date: 2019-08-14T07:20:30.685Z
  * license: MIT
  */
 
