@@ -53,10 +53,17 @@
       init: function(inOptions) {
         this.options = nx.mix(null, DEFAULT_OPTIONS, inOptions);
         this.audio = wx.getBackgroundAudioManager();
-        nx.mix(this.audio, this.options);
-        !this.options.autoplay && (this.audio.src = null);
         this._status = NxWeappBackgroundAudio.STATUS.init;
         this.attachEvents();
+        nx.forIn(
+          this.options,
+          function(key, value, target) {
+            if (key !== 'src' || target.autoplay) {
+              this.prop(key, value);
+            }
+          },
+          this
+        );
       },
       destroy: function() {},
       attachEvents: function() {
@@ -90,9 +97,8 @@
         this.audio.seek(inValue);
       },
       'pause,stop,seek': function(inName) {
-        var self = this;
         return function() {
-          return self.audio[inName].apply(self.audio, arguments);
+          return this.audio[inName].apply(this.audio, arguments);
         };
       }
     }
