@@ -18,6 +18,10 @@
     'prev'
   ];
 
+  var PROP_HOOKS = {
+    current: 'currentTime'
+  };
+
   var NxWeappBackgroundAudio = nx.declare('nx.WeappBackgroundAudio', {
     statics: {
       STATUS: {
@@ -64,6 +68,13 @@
           });
         });
       },
+      prop: function(inKey, inValue) {
+        var key = PROP_HOOKS[inKey] || inKey;
+        if (typeof inValue === 'undefined') {
+          return this.audio[key];
+        }
+        this.audio[key] = inValue;
+      },
       change: function(inEvent) {
         this.onChange(inEvent);
       },
@@ -74,6 +85,9 @@
         } else {
           this.audio.src = src;
         }
+      },
+      move: function(inValue) {
+        this.audio.seek(inValue);
       },
       'pause,stop,seek': function(inName) {
         var self = this;
