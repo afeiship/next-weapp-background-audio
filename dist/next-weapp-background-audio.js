@@ -2,7 +2,7 @@
  * name: next-weapp-background-audio
  * url: https://github.com/afeiship/next-weapp-background-audio
  * version: 1.0.0
- * date: 2019-08-14T06:02:54.042Z
+ * date: 2019-08-14T06:06:29.737Z
  * license: MIT
  */
 
@@ -10,7 +10,7 @@
   var global = global || this || window || Function('return this')();
   var nx = global.nx || require('next-js-core2');
   var nxClassify = nx.classify || require('next-classify');
-  var DEFAULT_OPTIONS = { title: '未命名', onChange: nx.noop };
+  var DEFAULT_OPTIONS = { title: '未命名', autoplay: false, onChange: nx.noop };
   var EVENTS = [
     'canplay',
     'waiting',
@@ -58,6 +58,7 @@
         this.options = nx.mix(null, DEFAULT_OPTIONS, inOptions);
         this.audio = wx.getBackgroundAudioManager();
         nx.mix(this.audio, this.options);
+        !this.options.autoplay && (this.audio.src = null);
         this._status = NxWeappBackgroundAudio.STATUS.init;
         this.attachEvents();
       },
