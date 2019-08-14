@@ -70,8 +70,8 @@
         var self = this;
         EVENTS.forEach(function(name) {
           var method = 'on' + nxClassify(name);
-          self.audio[method](function(event) {
-            self.change(event);
+          self.audio[method](function() {
+            self.options.onChange({ type: name });
           });
         });
       },
@@ -81,9 +81,6 @@
           return this.audio[key];
         }
         this.audio[key] = inValue;
-      },
-      change: function(inEvent) {
-        this.onChange(inEvent);
       },
       play: function() {
         var src = this.options.src;
