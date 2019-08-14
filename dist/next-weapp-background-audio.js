@@ -2,7 +2,7 @@
  * name: next-weapp-background-audio
  * url: https://github.com/afeiship/next-weapp-background-audio
  * version: 1.0.0
- * date: 2019-08-14T07:20:30.685Z
+ * date: 2019-08-14T08:57:13.021Z
  * license: MIT
  */
 
@@ -101,7 +101,7 @@
       move: function(inValue) {
         this.audio.seek(inValue);
       },
-      'pause,stop,seek': function(inName) {
+      'pause,stop': function(inName) {
         return function() {
           return this.audio[inName].apply(this.audio, arguments);
         };

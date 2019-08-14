@@ -93,7 +93,7 @@
       move: function(inValue) {
         this.audio.seek(inValue);
       },
-      'pause,stop,seek': function(inName) {
+      'pause,stop': function(inName) {
         return function() {
           return this.audio[inName].apply(this.audio, arguments);
         };

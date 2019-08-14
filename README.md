@@ -13,7 +13,6 @@ npm install -S afeiship/next-weapp-background-audio --registry=https://registry.
 | pause | -      | 暂停音乐                        |
 | stop  | -      | 停止音乐                        |
 | move  | -      | 跳转到指定位置(alias for: seek) |
-| seek  | -      | 跳转到指定位置                  |
 | prop  | -      | set/get 属性                    |
 
 ## usage
